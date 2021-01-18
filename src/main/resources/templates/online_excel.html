@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>在线表格</title>
+    <style>
+        .luckysheet-share-logo {
+            visibility: show;
+        }
+    </style>
+</head>
+
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/css/pluginsCss.css'/>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/plugins.css'/>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet/dist/css/luckysheet.css'/>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet/dist/assets/iconfont/iconfont.css'/>
+<script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/js/plugin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/luckysheet.umd.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/2.0.2/FileSaver.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/exceljs/4.2.0/exceljs.js"></script>
+<body>
+<!--<button onclick="clicks()">保存</button>-->
+<div id="luckysheet" style="margin:0px;padding:0px;position:absolute;width:100%;height:100%;left: 0px;top: 0px;"></div>
+<input type="hidden" id="viewname" th:value="${title}">
+
+</body>
+
+<script>
+    var title_ = $('#viewname').val();
+
+    var socket_url = "ws://" + window.location.host + "/excelSocket/"+'[[${userName}]]';
+    var options = {
+        container: 'luckysheet', //luckysheet为容器id
+        title: title_, // 设定表格名称
+        lang: 'zh', // 设定表格语言
+        allowEdit: true,//作用：是否允许前台编辑
+        allowUpdate: true,
+        showinfobar: true,//作用：是否显示顶部信息栏
+        myFolderUrl: "/",//作用：左上角<返回按钮的链接
+        functionButton: '<button id="" class="btn btn-primary" onclick="saveData()" style="padding:3px 6px;font-size: 12px;margin-right: 10px;">保存</button>  <button id="importExcelData" class="btn btn-primary" style="padding:3px 6px;font-size: 12px;margin-right: 10px;">导入</button>',
+        userInfo: '<i style="font-size:16px;color:#ff6a00;" class="fa fa-user-circle" aria-hidden="true">[[${userName}]]</i>',
+        loadUrl: "/publicApi/excel/downData?id=-1",
+        updateUrl: socket_url,
+        "gridKey": "1079500#-8803#7c45f52b7d01486d88bc53cb17dcd2c3",
+    }
+    $(function () {
+        //配置项
+        luckysheet.create(options)
+    })
+
+
+    function saveData(type) {
+
+    }
+
+    function downExcelData() {
+
+    }
+
+    function importExcel() {
+    }
+
+</script>
+
+</html>
