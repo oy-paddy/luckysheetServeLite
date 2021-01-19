@@ -1,8 +1,7 @@
 # luckysheetServeLite
 # luckysheet协同-Java后台` 轻 `版本
 
-参考博客：https://blog.csdn.net/u014632228/article/details/112711516 
-演示视频：https://www.bilibili.com/video/BV1cv411478D/
+> 参考博客：https://blog.csdn.net/u014632228/article/details/112711516 > 演示视频：https://www.bilibili.com/video/BV1cv411478D/
 
 ### 使用
 使用方便，不需要折腾其他环境。有多方便，直接下载，idea导入运行。访问：http://localhost/
